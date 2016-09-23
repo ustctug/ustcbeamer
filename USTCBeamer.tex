@@ -1,4 +1,4 @@
-﻿\documentclass[12pt]{beamer}	%声明文档类型为beamer幻灯片
+﻿\documentclass[12pt]{ctexbeamer}	%声明文档类型为beamer幻灯片
 \mode <presentation>
 \usetheme{Madrid}%%Warsaw [secheader]
 %\usecolortheme{beaver}
@@ -52,7 +52,6 @@
 \hypersetup{pdfpagemode=FullScreen} % makes your presentation go automatically to full screen
 
 \usepackage{fontspec,xunicode,xltxtra}
-\usepackage{xeCJK} %设定让幻灯片支持中文
 
 \usepackage{multimedia}	%让文档支持多媒体
 \usepackage{graphics}	%让文档支持图片
@@ -64,35 +63,6 @@
 \usepackage{color}
 \usepackage{graphicx,psfrag}
 \usepackage{epsfig}
-
-\setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Kaiti  Std}	%设置缺省中文字体，根据自己系统里的字体选择合适字体
-\setCJKsansfont{Adobe Kaiti Std}	%设置中文无衬线字体
-\setCJKmonofont{Adobe Fangsong Std}	%设置中文等宽字体
-
-\setCJKfamilyfont{song}{Adobe Song Std}	%自定义字体，可以用来在幻灯片中改变字体
-\setCJKfamilyfont{hei}{Adobe Heiti Std}	%自定义字体，可以用来在幻灯片中改变字体
-\setCJKfamilyfont{kai}{Adobe Kaiti Std}
-\setCJKfamilyfont{fs}{Adobe Fangsong Std}
-
-%\setCJKmainfont[BoldFont=SimHei,ItalicFont=KaiTi_GB2312]{KaiTi_GB2312}
-%\setCJKsansfont{SimHei}	%设置中文无衬线字体
-%\setCJKmonofont{FangSong_GB2312}
-%
-%\setCJKfamilyfont{song}{NSimSun}
-%\setCJKfamilyfont{hei}{SimHei}
-%\setCJKfamilyfont{kai}{KaiTi_GB2312}   % XP对应 KaiTi_GB2312，Vista对应KaiTi，注意根据系统切换
-%\setCJKfamilyfont{fs}{FangSong_GB2312} % XP对应 FangSong_GB2312，Vista对应FangSong，注意根据系统切换
-
-
-\newcommand{\song}{\CJKfamily{song}}    % 宋体
-\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体
-\newcommand{\kai}{\CJKfamily{kai}}      % 楷体
-\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
-
-\setmainfont[Mapping=tex-text]{Times New Roman}
-\setsansfont[Mapping=tex-text]{Arial}%[Mapping=tex-text]{Arial}%[BoldFont={Courier New Bold}]{Courier New}
-\setmonofont[Mapping=tex-text]{Courier New}%[BoldFont={Arial:style=Bold}]{Arial}
-
 
 \title{话者识别中失配信息补偿理论和方法研究}	%幻灯片标题
 \author[刘青松]{刘青松}
@@ -224,4 +194,4 @@ $$M=m_{ubm}+Dy$$
 \centerline{\Large 谢谢!}
 \end{frame}
 
-\end{document} 
+\end{document}
