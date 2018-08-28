@@ -1,0 +1,67 @@
+%
+% Copyright (C) 2014-2018 by USTC TeX User Group <https://github.com/ustctug>
+%
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3c
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%    https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+
+\mode<presentation>
+
+\usetheme{Madrid}%%Warsaw [secheader]
+%\usecolortheme{beaver}
+\beamersetaveragebackground{black!10}
+
+\setbeamercovered{transparent}
+%\setbeamertemplate{navigation symbols}{}
+
+\usefonttheme{professionalfonts}
+\useinnertheme{circles}%{rectangles}
+\setbeamertemplate{itemize item}{$\circledast$}%{\checkmark}
+
+
+\setbeamertemplate{title page}
+{
+%  \vbox{}
+  \vfill
+  \begin{centering}
+  \includegraphics[height=2.0cm]{ustc_logo_fig.pdf}
+        \vskip0.6em\par%
+    \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center]{author}
+      \usebeamerfont{author}
+ %     \insertauthor
+      {
+        \begin{tabular}{cc}
+  答辩人：&\insertauthor\\
+  导\quad 师：& \advisor
+  \end{tabular}
+      }
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+  %  {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+  \end{centering}
+  \vfill
+}
+
+\hypersetup{pdfpagemode=FullScreen} % makes your presentation go automatically to full screen
+
+\mode
+<all>
