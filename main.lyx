@@ -6,6 +6,9 @@
 \origin unavailable
 \textclass ctexbeamer
 \begin_preamble
+% Latex beamer template created by ywg in 2014
+% LyX template created by jmcui@2018
+
 \mode <presentation>
 \usetheme{USTC}%%Warsaw [secheader]
 
@@ -563,9 +566,9 @@ status open
 \begin_deeper
 \begin_layout Standard
 \begin_inset Formula 
-\[
-E=mc^{2}
-\]
+\begin{equation}
+E=mc^{2}\label{eq:test}
+\end{equation}
 
 \end_inset
 
@@ -585,7 +588,17 @@ E=mc^{2}
 status open
 
 \begin_layout Plain Layout
-Make Titles Informative.
+区块和示例区
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+示例、区块、警告是三种不同颜色box。示例区、区块区块、警告区是带标题的box，标题可以修改
 \end_layout
 
 \end_inset
@@ -671,8 +684,7 @@ Some Example Block Title
 status open
 
 \begin_layout Plain Layout
-Make Titles Informative.
- 
+例子
 \end_layout
 
 \end_inset
@@ -730,7 +742,7 @@ On second slide.
 status open
 
 \begin_layout Plain Layout
-Block区块
+警告区块
 \end_layout
 
 \end_inset
@@ -766,12 +778,12 @@ Block1
 
 \end_layout
 
-\begin_layout Block
+\begin_layout AlertBlock
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
-Block2
+注意
 \end_layout
 
 \end_inset
@@ -976,7 +988,7 @@ New line
 \end_layout
 
 \begin_layout Section*
-Summary
+总结
 \begin_inset Note Note
 status open
 
@@ -994,7 +1006,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-Summary
+总结
 \end_layout
 
 \end_inset
@@ -1091,7 +1103,7 @@ Even more stuff.
 status open
 
 \begin_layout Plain Layout
-All of the following is optional and typically not needed.
+根据需求删除或者设置附录，附录不在大纲中
 \end_layout
 
 \end_inset
@@ -1100,7 +1112,7 @@ All of the following is optional and typically not needed.
 \end_layout
 
 \begin_layout Subsection*
-For Further Reading
+参考文献
 \end_layout
 
 \begin_layout Frame
@@ -1118,7 +1130,7 @@ allowframebreaks
 status open
 
 \begin_layout Plain Layout
-For Further Reading
+参考文献
 \end_layout
 
 \end_inset
