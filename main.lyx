@@ -38,7 +38,7 @@
 \font_tt_scale 100 100
 \use_microtype false
 \use_dash_ligatures true
-\graphics xetex
+\graphics default
 \default_output_format default
 \output_sync 0
 \bibtex_command default
@@ -95,7 +95,7 @@
 \begin_layout Title
 话者识别中失配信息补偿理论和方法研究
 \begin_inset Argument 1
-status open
+status collapsed
 
 \begin_layout Plain Layout
 USTC
@@ -245,66 +245,6 @@ optional, but mostly needed
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-目录
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-AtBeginSubsection[]{%
-\end_layout
-
-\begin_layout Plain Layout
-
-  
-\backslash
-frame<beamer>{ 
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-frametitle{大纲}   
-\end_layout
-
-\begin_layout Plain Layout
-
-    
-\backslash
-tableofcontents[currentsection] %,,currentsubsection
-\end_layout
-
-\begin_layout Plain Layout
-
-  }
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Frame
 \begin_inset Argument 4
 status open
@@ -407,12 +347,72 @@ status open
 
 \begin_deeper
 \begin_layout Standard
-研究意义
+研究意
 \end_layout
 
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+设置在新一节前显示大纲，提演讲进度。可移到后面，这样从后面的章节开始显示。（跳过第一节）
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSection[]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{大纲}   
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection] %,,currentsubsection
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
 \end_inset
 
 
@@ -798,7 +798,24 @@ Block2
 \end_layout
 
 \begin_layout Section
-分栏
+分列
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+注意分列 需要先定义栏环境，然后设置每栏，注意栏环境要包括所有的栏！
+\end_layout
+
+\begin_layout Plain Layout
+如下至少要有两层环境括弧
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Frame
@@ -815,10 +832,11 @@ status open
 \end_layout
 
 \begin_deeper
-\begin_layout ColumnsTopAligned
+\begin_layout Columns
 
 \end_layout
 
+\begin_deeper
 \begin_layout Column
 5cm
 \end_layout
@@ -860,6 +878,7 @@ New line
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -885,6 +904,7 @@ status open
 
 \end_layout
 
+\begin_deeper
 \begin_layout Column
 \begin_inset ERT
 status open
@@ -904,7 +924,7 @@ textwidth
 \begin_layout Standard
 \begin_inset Graphics
 	filename ustc_logo_fig.pdf
-	lyxscale 50
+	lyxscale 25
 	width 100col%
 
 \end_inset
@@ -946,6 +966,7 @@ In right column.
 New line
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -1029,8 +1050,7 @@ third message
 status open
 
 \begin_layout Plain Layout
-An outlook is always optional
-.
+An outlook is always optional.
 \end_layout
 
 \end_inset
@@ -1088,7 +1108,6 @@ For Further Reading
 status collapsed
 
 \begin_layout Plain Layout
-
 allowframebreaks
 \end_layout
 
@@ -1163,7 +1182,7 @@ Handbook of Everything
 \emph default
 .
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1176,7 +1195,7 @@ newblock
 
  Some Press, 1990.
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1194,7 +1213,6 @@ status open
 \begin_layout Plain Layout
 Followed by interesting articles.
  Keep the list short.
-
  
 \end_layout
 
