@@ -1,0 +1,1669 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[ctexbeamer,amssymb.sty,hyperref.sty,pgf.sty,xcolor.sty,xxcolor.sty]{ctexbeamer}
+#  \DeclareCategory{Presentations}
+# Original Author: Till Tantau <tantau@users.sourceforge.net>
+# Revised and extended by Jürgen Spitzmüller <spitz@lyx.org>, Uwe Stöhr <uwestoehr@lyx.org>,
+#   Richard Heck <rgheck@lyx.org>, Martin Vermeer <martin.vermeer@hut.fi> and probably others.
+
+
+Format 66
+
+#
+# GLOBAL SETTINGS
+#
+
+# Includes
+Input stdcounters.inc
+Input stdinsets.inc
+
+# Beamer does not work with enumitem.
+# See bug #7047.
+ExcludesModule enumitem
+
+# General textclass parameters
+Columns            1
+Sides              1
+SecNumDepth        2
+TocDepth           2
+DefaultStyle       Standard
+
+# Pre-loaded packages
+Provides hyperref  1
+Provides geometry  1
+Provides color     1
+Provides xcolor    1
+
+# The default font layout
+DefaultFont
+  Family           Sans
+  Series           Medium
+  Shape            Up
+  Size             Normal
+  Color            None
+EndFont
+
+# Provide an own maketitle command, which can be altered by Title_(Plain_Frame)
+Preamble
+\newcommand{\SetAdvisor}[1]
+{
+    \def\advisor{#1}
+}
+EndPreamble
+
+TitleLaTeXName makebeamertitle
+AddToPreamble
+  % this default might be overridden by plain title style
+  \newcommand\makebeamertitle{
+    \begin{frame}
+    \titlepage
+    \end{frame}
+  }
+EndPreamble
+
+
+#
+# STANDARD STYLE
+#
+
+Style Standard
+  Category         MainText
+  Margin           Static
+  LatexType        Paragraph
+  LatexName        dummy
+  ParIndent        MM
+  ParSkip          0.4
+  Align            Left
+  AlignPossible    Block, Left, Right, Center
+  LabelType        No_Label
+End
+
+
+#
+# LISTS
+#
+
+Style Itemize
+  Category         List
+  Margin           Static
+  LatexType        Item_Environment
+  LatexName        itemize
+  Argument 1
+    LabelString    "Overlay Specifications|v"
+    Tooltip        "Overlay specifications for this list"
+    LeftDelim      [<
+    RightDelim     >]
+    PassThru       1
+  EndArgument
+  Argument item:1
+    LabelString   "Custom Item|s"
+    Tooltip       "A customized item string"
+  EndArgument
+  Argument item:2
+    MenuString    "Item Overlay Specifications"
+    LabelString   "On Slide"
+    Tooltip       "Overlay specifications for this item"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  NextNoIndent     1
+  ToggleIndent     Never
+  LeftMargin       MMN
+  LabelSep         xx
+  ItemSep          0.2
+  TopSep           0.7
+  BottomSep        0.7
+  ParSep           0.3
+  Align            Left
+  LabelType        Itemize
+End
+
+Style Enumerate
+  Category         List
+  Margin           Static
+  LatexType        Item_Environment
+  LatexName        enumerate
+  Argument 1
+    LabelString    "Overlay Specifications|v"
+    Tooltip        "Overlay specifications for this list"
+    LeftDelim      [<
+    RightDelim     >]
+    PassThru       1
+  EndArgument
+  Argument 2
+    LabelString    "Mini Template"
+    Tooltip        "Mini template for this list (see beamer manual for details)"
+  EndArgument
+  Argument item:1
+    LabelString   "Custom Item|s"
+    Tooltip       "A customized item string"
+  EndArgument
+  Argument item:2
+    MenuString    "Item Overlay Specifications"
+    LabelString   "On Slide"
+    Tooltip       "Overlay specifications for this item"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  NextNoIndent     1
+  ToggleIndent     Never
+  LeftMargin       MMN
+  LabelSep         xx
+  ParSkip          0.0
+  ItemSep          0.2
+  TopSep           0.7
+  BottomSep        0.7
+  ParSep           0.3
+  Align            Left
+  LabelType        Enumerate
+  RefPrefix        enu
+End
+
+Style Description
+  Category         List
+  Margin           First_Dynamic
+  LatexType        Item_environment
+  LatexName        description
+  Argument 1
+    LabelString    "Overlay Specifications|v"
+    Tooltip        "Overlay specifications for this list"
+    LeftDelim      [<
+    RightDelim     >]
+    PassThru       1
+  EndArgument
+  Argument 2
+    LabelString    "Longest label|s"
+    Tooltip        "The longest label in this list (to determine the indendation width)"
+  EndArgument
+  Argument item:1
+    MenuString    "Item Overlay Specifications"
+    LabelString   "On Slide"
+    Tooltip       "Overlay specifications for this item"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  NextNoIndent     1
+  LeftMargin       MM
+  LabelSep         xx
+  ParSkip          0.4
+  ItemSep          0.2
+  TopSep           0.7
+  BottomSep        0.7
+  ParSep           0.3
+  Align            Left
+  LabelType        Manual
+  LabelFont
+    Series         Bold
+  EndFont
+End
+
+
+#
+# SECTIONING
+#
+
+Style Part
+  Category         Sectioning
+  Margin           Dynamic
+  LatexType        Command
+  LatexName        part
+  Argument 1
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
+    Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  Argument 2
+    LabelString    "Short Title|S"
+    Tooltip        "The part as it appears in the table of contents/running headers"
+    InsertCotext   1
+    IsTocCaption   1
+  EndArgument
+  NeedProtect      1
+  NextNoIndent     1
+  ToggleIndent     Never
+  Labelsep         xx
+  ParSkip          0.4
+  TopSep           4
+  BottomSep        4
+  ParSep           0.8
+  Align            Center
+  LabelType        Static
+  LabelString      "Part"
+  RefPrefix        part
+  Font
+    Family         Roman
+    Series         Bold
+    Size           Huge
+  EndFont
+  LabelFont
+    Color          Latex
+  EndFont
+  TocLevel         -1
+End
+
+Style Section
+  Category         Sectioning
+  Margin           First_Dynamic
+  LatexType        Command
+  LatexName        section
+  NeedProtect      1
+  NextNoIndent     1
+  ToggleIndent     Never
+  LabelSep         xx
+  ParSkip          0.4
+  TopSep           2
+  BottomSep        0.25
+  ParSep           0.7
+  Align            Left
+  LabelType        Static
+  LabelCounter     section
+  LabelString      "Section \arabic{section}"
+  RefPrefix        sec
+  Argument 1
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
+    Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  Argument 2
+    LabelString    "Short Title|S"
+    Tooltip        "The section as it appears in the table of contents/running headers"
+    InsertCotext   1
+    IsTocCaption   1
+  EndArgument
+  Font
+    Family         Roman
+    Series         Bold
+    Size           huge
+  EndFont
+  LabelFont
+    Color          latex
+  EndFont
+  LabelStringAppendix "\Alph{section}"
+  TocLevel         1
+End
+
+Style Section*
+  CopyStyle        Section
+  Category         Unnumbered
+  Margin           Static
+  LatexName        section
+  LabelType        No_Label
+  ResetArgs        1
+  Argument 1
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
+    Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  LaTeXParam       *
+End
+
+Style Subsection
+  Category         Sectioning
+  Margin           First_Dynamic
+  LatexType        Command
+  LatexName        subsection
+  NeedProtect      1
+  NextNoIndent     1
+  ToggleIndent     Never
+  LabelSep         xx
+  ParSkip          0.4
+  TopSep           2
+  BottomSep        0.25
+  ParSep           0.5
+  Align            Left
+  LabelType        Static
+  LabelCounter     subsection
+  LabelString      "Subsection \arabic{section}.\arabic{subsection}"
+  RefPrefix        subsec
+  Argument 1
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
+    Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  Argument 2
+    LabelString    "Short Title|S"
+    Tooltip        "The subsection as it appears in the table of contents/running headers"
+    InsertCotext   1
+    IsTocCaption   1
+  EndArgument
+  Font
+    Family         Roman
+    Series         Bold
+    Size           larger
+  EndFont
+  LabelFont
+    Color          latex
+  EndFont
+  LabelStringAppendix "\arabic{section}.\arabic{subsection}"
+  TocLevel         2
+End
+
+Style Subsection*
+  CopyStyle        Subsection
+  Category         Unnumbered
+  Margin           Static
+  LatexName        subsection
+  LabelType        No_Label
+  ResetArgs        1
+  Argument 1
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
+    Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  LaTeXParam       *
+End
+
+Style Subsubsection
+  Category         Sectioning
+  Margin           First_Dynamic
+  LatexType        Command
+  LatexName        subsubsection
+  NeedProtect      1
+  NextNoIndent     1
+  ToggleIndent     Never
+  LabelSep         xx
+  ParSkip          0.4
+  TopSep           2
+  BottomSep        0.25
+  ParSep           0.5
+  Align            Left
+  LabelType        Static
+  LabelCounter     subsubsection
+  LabelString      "Subsubsection \arabic{section}.\arabic{subsection}.\arabic{subsubsection}"
+  RefPrefix        sub
+  Argument 1
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
+    Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  Argument 2
+    LabelString    "Short Title|S"
+    Tooltip        "The subsubsection as it appears in the table of contents/running headers"
+    InsertCotext   1
+    IsTocCaption   1
+  EndArgument
+  Font
+    Family         Roman
+    Series         Bold
+    Size           large
+  EndFont
+  LabelFont
+    Color          latex
+  EndFont
+  LabelStringAppendix "\arabic{section}.\arabic{subsection}.\arabic{subsubsection}"
+  TocLevel         3
+End
+
+Style Subsubsection*
+  CopyStyle        Subsubsection
+  Category         Unnumbered
+  Margin           Static
+  LatexName        subsubsection
+  LabelType        No_Label
+  ResetArgs        1
+  Argument 1
+    LabelString    "Mode"
+    MenuString     "Mode Specification|S"
+    Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  LaTeXParam       *
+End
+
+
+#
+# FRAMES
+#
+
+Style Frame
+  Category         Frames
+  Margin           First_Dynamic
+  LeftMargin       xx
+  LatexType        Environment
+  LatexName        frame
+  LabelString      "Frame"
+  TocLevel         4
+  KeepEmpty        1
+  NextNoIndent     1
+  Align            Left
+  LabelType        Static
+  LabelSep         xx
+  ParSkip          0.5
+  TopSep           1
+  BottomSep        1
+  ParSep           0
+  LabelFont
+    Size           largest
+    Family         Roman
+    Color          latex
+  EndFont
+  Argument 1
+    LabelString     "Action"
+    MenuString      "Overlay Specifications|v"
+    Tooltip         "Overlay specifications for this frame"
+    LeftDelim       <
+    RightDelim      >
+    PassThru       1
+  EndArgument
+  Argument 2
+    LabelString     "Default Overlay Specifications"
+    Tooltip         "Default overlay specifications within this frame"
+    LeftDelim       [<
+    RightDelim      >]
+    PassThru       1
+  EndArgument
+  Argument 3
+    MenuString      "Frame Options"
+    LabelString     "Options"
+    Tooltip         "Frame options (see beamer manual)"
+  EndArgument
+  Argument 4
+    LabelString    "Frame Title"
+    Tooltip        "Enter the frame title here"
+    LeftDelim      {
+    RightDelim     }
+    Decoration     conglomerate
+    Font
+      Color        blue
+      Size         largest
+    EndFont
+    AutoInsert     1
+    IsTocCaption   1
+  EndArgument
+  AutoNests 
+	Standard,Itemize,Enumerate,Description,FrameTitle,FrameSubtitle,Column,
+	Columns,ColumnsCenterAligned,ColumnsTopAligned,Pause,Overprint,OverlayArea,Only,Block,
+	ExampleBlock,AlertBlock,Bibliography,Quotation,Quote,Verse,Corollary,Definition,Definitions,
+	Example,Examples,Fact,Lemma,Proof,Theorem,LyX-Code
+  EndAutoNests
+End
+
+Style PlainFrame
+  CopyStyle         Frame
+  LabelString       "Frame (plain)"
+  Argument 3
+    MenuString      "Frame Options"
+    LabelString     "Options"
+    Tooltip         "Frame options (see beamer manual)"
+    PresetArg       "plain"
+  EndArgument
+End
+
+Style FragileFrame
+  CopyStyle         Frame
+  LabelString       "Frame (fragile)"
+  Argument 3
+    MenuString      "Frame Options"
+    LabelString     "Options"
+    Tooltip         "Frame options (see beamer manual)"
+    PresetArg       "fragile"
+  EndArgument
+End
+
+Style AgainFrame
+  Category          Frames
+  KeepEmpty         0
+  LatexType         Command
+  LatexName         againframe
+  Argument 1
+    LabelString     "Slide"
+    MenuString      "Overlay Specifications|v"
+    Tooltip         "Overlay specifications for this frame"
+    LeftDelim       <
+    RightDelim      >
+    PassThru       1
+  EndArgument
+  Argument 2
+    LabelString     "Default Overlay Specifications"
+    Tooltip         "Default overlay specifications within this frame"
+    LeftDelim       [<
+    RightDelim      >]
+    PassThru       1
+  EndArgument
+  Argument 3
+    MenuString      "Frame Options"
+    LabelString     "Options"
+    Tooltip         "Frame options (see beamer manual)"
+  EndArgument
+  Margin            First_Dynamic
+  NextNoIndent      1
+  ParSkip           0
+  TopSep            3
+  BottomSep         3
+  ParSep            0
+  LabelType         Static
+  LabelBottomSep    0
+  LeftMargin        M
+  LabelSep          xx
+  LabelString       "Repeat frame with label"
+  Font
+    Color           latex
+  EndFont
+  LabelFont
+    Family          Roman
+    Color           latex
+    Size            Largest
+  EndFont
+  TocLevel          4
+End
+
+Style FrameTitle
+  Category         Frames
+  Margin           Static
+  LatexType        Command
+  LatexName        frametitle
+  ParSkip          0.4
+  ItemSep          0
+  TopSep           0
+  BottomSep        1
+  ParSep           1
+  Align            Block
+  LabelType        No_Label
+  Font
+    Color          Blue
+    Size           Largest
+  EndFont
+  Argument 1
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|v"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  Argument 2
+    LabelString    "Short Frame Title|S"
+    Tooltip        "A short form of the frame title used in some themes"
+    InsertCotext   1
+  EndArgument
+End
+
+Style FrameSubtitle
+  Category         Frames
+  Margin           Static
+  LatexType        Command
+  LatexName        framesubtitle
+  ParSkip          0.4
+  ItemSep          0
+  TopSep           0
+  BottomSep        1
+  ParSep           1
+  Align            Block
+  LabelType        No_Label
+  Font
+    Color          Blue
+  EndFont
+  Argument 1
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|v"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+End
+
+
+#
+# COLUMS
+#
+
+Style Column
+  Category         Columns
+  Margin           Static
+  LatexType        Command
+  LatexName        column
+  ParSkip          0.5
+  TopSep           1
+  BottomSep        1
+  ParSep           0
+  ParIndent        MM
+  Align            Left
+  LabelType        Static
+  LabelSep         xx
+  LabelString      "Start column (increase depth!), width:"
+  ToggleIndent     Never
+  Argument 1
+    MenuString     "Column Options"
+    LabelString    "Options"
+    Tooltip        "Column options (see beamer manual)"
+  EndArgument
+  LeftMargin       "Start column (increase depth!), width:xx"
+  LabelFont
+    Family         Roman
+    Color          latex
+  EndFont
+End
+
+Style Columns
+  Category         Columns
+  KeepEmpty        1
+  Margin           Static
+  LatexType        Environment
+  NextNoIndent     0
+  ParIndent        MM
+  Align            Left
+  LabelType        Static
+  LabelSep         xx
+  LatexName        columns
+  LabelString      "Columns"
+  LeftMargin       "Columnsxx"
+  Argument 1
+    LabelString    "Column Placement Options"
+    Tooltip        "Column placement options (t, T, c, b)"
+  EndArgument
+  ParSkip          0.5
+  TopSep           1
+  BottomSep        1
+  ParSep           0
+  LabelFont
+    Family         Roman
+    Color          latex
+  EndFont
+  AutoNests 
+	Standard,Itemize,Enumerate,Description,Pause,Overprint,OverlayArea,Only,Block,
+	ExampleBlock,AlertBlock,Bibliography,Quotation,Quote,Verse,Corollary,Definition,Definitions,
+	Example,Examples,Fact,Lemma,Proof,Theorem,LyX-Code
+  EndAutoNests
+End
+
+Style ColumnsCenterAligned
+  CopyStyle        Columns
+  LatexParam       [c]
+  LabelString      "Columns (center aligned)"
+  LeftMargin       "Columns (center aligned)xx"
+  ResetArgs        1
+End
+
+Style ColumnsTopAligned
+  CopyStyle        Columns
+  LatexParam       [t]
+  LabelString      "Columns (top aligned)"
+  LeftMargin       "Columns (top aligned)xx"
+  ResetArgs        1
+End
+
+
+#
+# OVERLAYS
+#
+
+Style Pause
+  Category         Overlays
+  KeepEmpty        1
+  LatexType        Command
+  LatexName        pause
+  Margin           First_Dynamic
+  Argument 1
+    LabelString    "Pause number"
+    Tooltip        "Number of slide where the context below the pause gets visible"
+  EndArgument
+  NextNoIndent     1
+  ParSkip          0
+  TopSep           0
+  BottomSep        0.25
+  ParSep           0
+  Align            Center
+  LabelType        Static
+  LabelBottomSep   0
+  LeftMargin       MMMMM
+  LabelString      "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
+  LabelFont
+    Family         typewriter
+    Series         Medium
+    Size           Normal
+    Color          latex
+  EndFont
+End
+
+Style Overprint
+  Category         Overlays
+  Margin           Static
+  LatexType        Item_Environment
+  LatexName        overprint
+  ItemCommand      onslide
+  Argument 1
+    MenuString     "Overprint Area Width"
+    LabelString    "Width"
+    Tooltip        "The width of the overprint area (default: text width)"
+  EndArgument
+  Argument item:1
+    MenuString    "Item Overlay Specifications"
+    LabelString   "On Slide"
+    Tooltip       "Overlay specifications for this item"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+    AutoInsert     1
+  EndArgument
+  NextNoIndent     1
+  LeftMargin       MMMMMMMMN
+  LabelSep         xx
+  ItemSep          0.2
+  TopSep           0.7
+  BottomSep        0.7
+  ParSep           0.3
+  Align            Left
+  LabelType        Static
+  LabelString      "Overprint"
+  LabelFont
+    Family         Roman
+    Color          latex
+  EndFont
+End
+
+Style OverlayArea
+  Category         Overlays
+  Margin           First_Dynamic
+  LatexType        Environment
+  NextNoIndent     0
+  ParIndent        MM
+  Align            Left
+  LabelType        Static
+  LabelSep         xx
+  LatexName        overlayarea
+  LabelString      "Overlayarea"
+  ParSkip          0.5
+  TopSep           1
+  BottomSep        1
+  ParSep           0
+  LabelFont
+    Family         Roman
+    Color          latex
+  EndFont
+  Argument 1
+    LabelString    "Overlay Area Width"
+    Tooltip        "The width of the overlay area"
+    Mandatory      1
+  EndArgument
+  Argument 2
+    MenuString     "Overlay Area Height"
+    LabelString    "Height"
+    Tooltip        "The height of the overlay area"
+    Mandatory      1
+  EndArgument
+End
+
+Style Uncover
+  Category         Overlays
+  Margin           First_Dynamic
+  LatexType        Environment
+  NextNoIndent     0
+  ParIndent        MM
+  Align            Left
+  LabelType        Static
+  LatexName        uncoverenv
+  LabelSep         xx
+  LabelString      "Uncovered on slides"
+  ParSkip          0.5
+  TopSep           1
+  BottomSep        1
+  ParSep           0
+  LabelFont
+    Family         Roman
+    Color          Latex
+  EndFont
+  Argument 1
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|v"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+End
+
+Style Only
+  Category         Overlays
+  Margin           First_Dynamic
+  LatexType        Environment
+  NextNoIndent     0
+  ParIndent        MM
+  Align            Left
+  LabelType        Static
+  LatexName        onlyenv
+  LabelSep         xx
+  LabelString      "Only on slides"
+  ParSkip          0.5
+  TopSep           1
+  BottomSep        1
+  ParSep           0
+  LabelFont
+    Family         Roman
+    Color          Latex
+  EndFont
+  Argument 1
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|v"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+End
+
+
+#
+# BLOCKS
+#
+
+Style Block
+  Category         Blocks
+  Margin           Dynamic
+  LatexType        Environment
+  NextNoIndent     1
+  KeepEmpty        1
+  Align            Left
+  LabelType        Static
+  LabelSep         xx
+  LatexName        block
+  LabelString      "Block:"
+  ParSkip          0.5
+  TopSep           1
+  BottomSep        1
+  ParSep           0
+  LabelFont
+    Family         Roman
+    Color          latex
+  EndFont
+  Argument 1
+    LabelString    "Action"
+    MenuString     "Action Specification|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  Argument 2
+    LabelString    "Block Title"
+    Tooltip        "Enter the block title here"
+    Mandatory      1
+    Decoration     conglomerate
+    Font
+      Color        blue
+      Size         large
+    EndFont
+    AutoInsert     1
+  EndArgument
+  AutoNests 
+	Standard,Itemize,Enumerate,Description,Pause,Overprint,OverlayArea,Only,Quotation,
+	Quote,Verse,Corollary,Definition,Definitions,Example,Examples,Fact,Lemma,Proof,Theorem,LyX-Code
+  EndAutoNests
+End
+
+Style ExampleBlock
+  CopyStyle        Block
+  LatexName        exampleblock
+  LabelString      "Example Block:"
+  Font
+    Color          green
+  EndFont
+End
+
+Style AlertBlock
+  CopyStyle        Block
+  LatexName        alertblock
+  LabelString      "Alert Block:"
+  Font
+    Color          red
+  EndFont
+End
+
+
+#
+# TITLING
+#
+
+Style Title
+  Category         Titling
+  Margin           Static
+  LatexType        Command
+  InTitle          1
+  LatexName        title
+  ParSkip          0.4
+  ItemSep          0
+  TopSep           0
+  BottomSep        1
+  ParSep           1
+  Align            Center
+  LabelType        No_Label
+  Argument 1
+    LabelString   "Short Title|S"
+    Tooltip       "Short title which appears in the sidebar/header"
+    InsertCotext   1
+  EndArgument
+  Font
+    Size           Huge
+    Series         Bold
+    Color          Blue
+  EndFont
+End
+
+Style Title_(Plain_Frame)
+  CopyStyle        Title
+  Preamble
+     % plain title style, override default
+     \renewcommand\makebeamertitle{\frame[plain]{\maketitle}}%
+  EndPreamble
+End
+
+Style Subtitle
+  Category         Titling
+  Margin           Static
+  LatexType        Command
+  InTitle          1
+  LatexName        subtitle
+  ParSkip          0.4
+  ItemSep          0
+  TopSep           0
+  BottomSep        1
+  ParSep           1
+  Align            Center
+  LabelType        No_Label
+  Argument 1
+    LabelString   "Short Subtitle|S"
+    Tooltip       "Short subtitle which appears in the sidebar/header"
+    InsertCotext   1
+  EndArgument
+  Font
+    Size           Large
+    Series         Bold
+    Color          Blue
+  EndFont
+End
+
+Style Author
+  Category         Titling
+  Margin           Static
+  LatexType        Command
+  InTitle          1
+  LatexName        author
+  ParSkip          0.4
+  TopSep           1.3
+  BottomSep        0.7
+  ParSep           0.7
+  Align            Center
+  LabelType        No_Label
+  Argument 1
+    LabelString   "Short Author|S"
+    Tooltip       "Short author which appears in the sidebar/header"
+    InsertCotext   1
+  EndArgument
+  Font
+    Size           Largest
+    Color          Blue
+  EndFont
+End
+
+
+Style Advisor
+  Category         Titling
+  Margin           Static
+  LatexType        Command
+  InTitle          1
+  LatexName        SetAdvisor
+  ParSkip          0.4
+  TopSep           1.3
+  BottomSep        0.7
+  ParSep           0.7
+  Align            Center
+  LabelType        No_Label
+  Font
+    Size           Largest
+    Color          Blue
+  EndFont
+End
+
+Style Institute
+  Category         Titling
+  Margin           Dynamic
+  LatexType        Command
+  InTitle          1
+  LatexName        institute
+  ParSkip          0.4
+  TopSep           0.9
+  BottomSep        0.5
+  ParSep           1
+  Align            Center
+  LabelType        No_Label
+  Argument 1
+    LabelString   "Short Institute|S"
+    Tooltip       "Short institute which appears in the sidebar/header"
+    InsertCotext   1
+  EndArgument
+  Font
+    Size           Large
+    Color          Blue
+  EndFont
+End
+
+InsetLayout "Flex:InstituteMark"
+  LyxType          custom
+  LatexType        command
+  LatexName        inst
+  LabelString      "Institute Mark"
+  Font
+    Color          foreground
+    Size           Small
+    Family         Roman
+    Shape          Up
+    Series         Medium
+    Misc           No_Emph
+    Misc           No_Noun
+    Misc           No_Bar
+  EndFont
+  LabelFont
+    Color          blue
+    Size           Small
+  EndFont
+End
+
+Style Date
+  Category         Titling
+  Margin           Dynamic
+  LatexType        Command
+  InTitle          1
+  LatexName        date
+  ParSkip          0.4
+  TopSep           0.9
+  BottomSep        0.5
+  ParSep           1
+  Align            Center
+  LabelType        No_Label
+  Argument 1
+    LabelString   "Short Date|S"
+    Tooltip       "Short date which appears in the sidebar/header"
+    InsertCotext   1
+  EndArgument
+  Font
+    Size           Largest
+    Color          Blue
+  EndFont
+End
+
+Style TitleGraphic
+  Category         Titling
+  Margin           Static
+  LatexType        Command
+  InTitle          1
+  LatexName        titlegraphic
+  ParSkip          0.4
+  ItemSep          0
+  TopSep           0
+  BottomSep        1
+  ParSep           1
+  Align            Center
+  LabelType        No_Label
+  Font
+    Size           Huge
+    Series         Bold
+    Color          Blue
+  EndFont
+End
+
+
+#
+# BACK MATTER
+#
+
+Style Bibliography
+  Category         BackMatter
+  Margin           First_Dynamic
+  LatexType        Bib_Environment
+  LatexName        thebibliography
+  NextNoIndent     1
+  ToggleIndent     Never
+  LeftMargin       MM
+  ParSkip          0.4
+  ItemSep          0
+  TopSep           0.7
+  BottomSep        0.7
+  ParSep           0.5
+  Align            Left
+  LabelType        Bibliography
+  LabelString      "References"
+  LabelBottomSep   0.7
+  LabelFont
+    Series         Bold
+    Size           Larger
+  EndFont
+  TocLevel         1
+  IsTocCaption     0
+End
+
+
+#
+# QUOTATION
+#
+
+Style Quotation
+  Category         MainText
+  Margin           Static
+  LatexType        Environment
+  LatexName        quotation
+  NextNoIndent     1
+  ToggleIndent     Always
+  LeftMargin       MMM
+  RightMargin      MMM
+  ParIndent        MM
+  ParSkip          0
+  ItemSep          0
+  TopSep           0.5
+  BottomSep        0.5
+  ParSep           0
+  Align            Block
+  AlignPossible    Block, Left, Right, Center
+  Argument 1
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|v"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+End
+
+Style Quote
+  Category         MainText
+  Margin           Static
+  LatexType        Environment
+  LatexName        quote
+  NextNoIndent     1
+  ToggleIndent     Never
+  LeftMargin       MMM
+  RightMargin      MMM
+  TopSep           0.5
+  ParSep           0.5
+  BottomSep        0.5
+  Align            Block
+  AlignPossible    Block, Left, Right, Center
+  LabelType        No_Label
+  Argument 1
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|v"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+End
+
+Style Verse
+  # LaTeX type is first dynamic because of LaTeX implementation.
+  # In LyX this does not make sense.
+  Category         MainText
+  LatexType        Environment
+  LatexName        verse
+  Margin           First_Dynamic
+  NextNoIndent     1
+  LeftMargin       MMMM
+  LabelIndent      MMMM
+  ParSkip          0.4
+  TopSep           0.7
+  BottomSep        0.7
+  ParSep           0.5
+  Align            Block
+  AlignPossible    Block, Left
+  LabelType        No_Label
+  Argument 1
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|v"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+End
+
+
+#
+# THEOREMS AND SUCH
+#
+
+Style Corollary
+   Category        Reasoning
+   Margin          First_Dynamic
+   LatexType       Environment
+   NextNoIndent    0
+   ParIndent       MM
+   Align           Left
+   LabelType       Static
+   LabelSep        xx
+   LatexName       corollary
+   LabelString     "Corollary."
+   ParSkip         0.5
+   TopSep          1
+   BottomSep       1
+   ParSep          0
+   KeepEmpty       1
+   LabelFont
+     Series        Bold
+     Color         Blue
+     Size          Large
+   EndFont
+  Argument 1
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  Argument 2
+    LabelString    "Additional Theorem Text"
+    Tooltip        "Additional text appended to the theorem header"
+  EndArgument
+  AutoNests 
+	Standard,Itemize,Enumerate,Description,Pause,Overprint,OverlayArea,Only,LyX-Code
+  EndAutoNests
+End
+
+Style Definition
+  CopyStyle        Corollary
+  LatexName        definition
+  LabelString      "Definition."
+End
+
+Style Definitions
+  CopyStyle        Corollary
+  LatexName        definitions
+  LabelString      "Definitions."
+End
+
+Style Example
+  CopyStyle        Corollary
+  LatexName        example
+  LabelString      "Example."
+  LabelFont
+    Series         Bold
+    Color          Green
+  EndFont
+End
+
+Style Examples
+  CopyStyle        Corollary
+  LatexName        examples
+  LabelString      "Examples."
+End
+
+Style Fact
+  CopyStyle        Corollary
+  LatexName        fact
+  LabelString      "Fact."
+End
+
+Style Lemma
+  CopyStyle        Corollary
+  LatexName        lemma
+  LabelString      "Lemma."
+End
+
+Style Proof
+  CopyStyle        Corollary
+  LatexName        proof
+  LabelString      "Proof."
+End
+
+Style Theorem
+  CopyStyle        Corollary
+  LatexName        theorem
+  LabelString      "Theorem."
+End
+
+
+#
+# MISC.
+#
+
+Style LyX-Code
+  Category         MainText
+  Margin           Static
+  LatexType        Environment
+  LatexName        lyxcode
+  NextNoIndent     1
+  LeftMargin       MMM
+  RightMargin      MMM
+  TopSep           0.5
+  BottomSep        0.5
+  Align            Left
+  AlignPossible    Block, Left, Right, Center
+  LabelType        No_Label
+  FreeSpacing      1
+  Preamble
+  \newenvironment{lyxcode}
+    {\par\begin{list}{}{
+      \setlength{\rightmargin}{\leftmargin}
+      \setlength{\listparindent}{0pt}% needed for AMS classes
+      \raggedright
+      \setlength{\itemsep}{0pt}
+      \setlength{\parsep}{0pt}
+      \normalfont\ttfamily}%
+     \def\{{\char`\{}
+     \def\}{\char`\}}
+     \def\textasciitilde{\char`\~}
+     \item[]}
+    {\end{list}}
+  EndPreamble
+  Font
+    Family         Typewriter
+  EndFont
+End
+ 
+Style NoteItem
+  Category         MainText
+  Margin           Static
+  LatexType        Command
+  LatexName        note
+  LatexParam       [item]
+  ParSkip          0.5
+  TopSep           1
+  BottomSep        1
+  ParSep           0
+  Align            Left
+  LabelType        Static
+  LabelSep         xx
+  LabelString      "Note:"
+  LeftMargin       "Note:xx"
+  LabelFont
+    Family         Roman
+    Color          latex
+  EndFont
+  Argument 1
+    LabelString    "On Slide"
+    MenuString     "Overlay Specifications|v"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+End
+ 
+
+#
+# CHARSTYLES
+#
+
+
+InsetLayout Flex:Bold
+  LyXType          charstyle
+  LabelString      Bold
+  LatexType        command
+  LatexName        textbf
+  Font
+    Series         bold
+  EndFont
+  Argument 1
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  ResetsFont       true
+End
+
+InsetLayout Flex:Emphasize
+  LyXType          charstyle
+  LabelString      Emph.
+  LatexType        command
+  LatexName        emph
+  Font
+    Shape          italic
+  EndFont
+  Argument 1
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  ResetsFont       true
+End
+
+InsetLayout Flex:Alert
+  LyXType          charstyle
+  LabelString      Alert
+  LatexType        command
+  LatexName        alert
+  Font
+    Color          red
+  EndFont
+  Argument 1
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  ResetsFont       true
+End
+
+InsetLayout Flex:Structure
+  LyXType          charstyle
+  LabelString      Structure
+  LatexType        command
+  LatexName        structure
+  Font
+    Color          blue
+  EndFont
+  Argument 1
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  ResetsFont       true
+End
+
+InsetLayout Flex:Only
+  LyXType          charstyle
+  LabelString      Only
+  LatexType        command
+  LatexName        only
+  Font
+    Color          red
+  EndFont
+  Argument 1
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+    AutoInsert     1
+  EndArgument
+  ResetsFont       true
+End
+
+InsetLayout Flex:Uncover
+  LyXType          charstyle
+  LabelString      Uncover
+  LatexType        command
+  LatexName        uncover
+  Font
+    Color          red
+  EndFont
+  Argument 1
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+    AutoInsert     1
+  EndArgument
+  ResetsFont       true
+End
+
+InsetLayout Flex:Visible
+  LyXType          charstyle
+  LabelString      Visible
+  LatexType        command
+  LatexName        visible
+  Font
+    Color          red
+  EndFont
+  Argument 1
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+    AutoInsert     1
+  EndArgument
+  ResetsFont       true
+End
+
+InsetLayout Flex:Invisible
+  LyXType          charstyle
+  LabelString      Invisible
+  LatexType        command
+  LatexName        invisible
+  Font
+    Color          red
+  EndFont
+  Argument 1
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+    AutoInsert     1
+  EndArgument
+  ResetsFont       true
+End
+
+InsetLayout Flex:Alternative
+  LyXType          charstyle
+  LabelString      Alternative
+  LatexType        command
+  LatexName        alt
+  Font
+    Color          red
+  EndFont
+  Argument 1
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  Argument 2
+    LabelString    "Default Text"
+    Tooltip        "Enter the default text here"
+    Mandatory      1
+  EndArgument
+  ResetsFont       true
+End
+
+InsetLayout Flex:Beamer_Note
+  LyXType          custom
+  LabelString      Note
+  LatexType        command
+  LatexName        note
+  Decoration       Classic
+  Font
+    Color          blue
+  EndFont
+  Argument 1
+    LabelString    "Action"
+    MenuString     "Action Specifications|S"
+    Tooltip        "Specify the overlay settings (see beamer manual)"
+    LeftDelim      <
+    RightDelim     >
+    PassThru       1
+  EndArgument
+  Argument 2
+    LabelString    "Note Options"
+    Tooltip        "Specifiy note options (see beamer manual)"
+  EndArgument
+  ResetsFont       true
+End
+
+InsetLayout Flex:ArticleMode
+   LyXType         custom
+   LatexName       mode
+   LatexParam      <article>
+   LatexType       command
+   Decoration      classic
+   LabelString     Article
+   MultiPar        true
+   ResetsFont      true
+End
+
+InsetLayout Flex:PresentationMode
+   LyXType         custom
+   LatexName       mode
+   LatexParam      <presentation>
+   LatexType       command
+   Decoration      classic
+   LabelString     Presentation
+   MultiPar        true
+   ResetsFont      true
+End
+
+
+#
+# FLOATS
+#
+
+Input stdfloatnames.inc
+
+Float
+  Type             table
+  GuiName          Table
+  Placement        tbp
+  Extension        lot
+  NumberWithin     none
+  Style            plain
+  ListName         "List of Tables"
+  IsPredefined     true
+  UsesFloatPkg     false
+  ListCommand      listoftables
+End
+
+Float
+  Type             figure
+  GuiName          Figure
+  Placement        tbp
+  Extension        lof
+  NumberWithin     none
+  Style            plain
+  ListName         "List of Figures"
+  IsPredefined     true
+  UsesFloatPkg     false
+  ListCommand      listoffigures
+End
+
+
+Input theorems-refprefix.inc
