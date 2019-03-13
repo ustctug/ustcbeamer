@@ -1,0 +1,158 @@
+\newif\ifbeamer@ustcblue
+\newif\ifbeamer@ustcred
+\newif\ifbeamer@black
+\newif\ifbeamer@violet
+\newif\ifbeamer@blue
+
+\DeclareOption{ustcblue}{\beamer@ustcbluetrue\beamer@ustcredfalse\beamer@blackfalse\beamer@violetfalse\beamer@bluefalse}
+\DeclareOption{ustcred}{\beamer@ustcbluefalse\beamer@ustcredtrue\beamer@blackfalse\beamer@violetfalse\beamer@bluefalse}
+\DeclareOption{black}{\beamer@ustcbluefalse\beamer@ustcredfalse\beamer@blacktrue\beamer@violetfalse\beamer@bluefalse}
+\DeclareOption{violet}{\beamer@ustcbluefalse\beamer@ustcredfalse\beamer@blackfalse\beamer@violettrue\beamer@bluefalse}
+\DeclareOption{blue}{\beamer@ustcbluefalse\beamer@ustcredfalse\beamer@blackfalse\beamer@violetfalse\beamer@bluetrue}
+
+\ExecuteOptions{ustcblue}
+\ProcessOptions\relax
+\ifbeamer@ustcblue
+  \definecolor{themecolor}{cmyk}{1,0.8,0,0}     %科大蓝色
+\fi
+\ifbeamer@ustcred
+  \definecolor{themecolor}{cmyk}{0,1,1,0}       %科大红色
+\fi
+\ifbeamer@black
+  \definecolor{themecolor}{HTML}{000000}        %黑色
+\fi
+\ifbeamer@violet
+  \definecolor{themecolor}{cmyk}{0.8,1,0,0}     %紫色
+\fi
+\ifbeamer@blue
+  \definecolor{themecolor}{cmyk}{0.95,0.45,0,0} %蓝色
+\fi
+
+\useoutertheme{infolines}%
+%\usefonttheme{serif}          %使用衬线字体，自行设置
+%\setmainfont{Times New Roman} %全局英文字体，自行设置
+%\setCJKmainfont{STKaiti}      %全局中文字体，自行设置
+\defbeamertemplate*{headline}{BLANK}{}
+\defbeamertemplate*{navigation symbols}{} %隐藏导航栏
+
+\setbeamerfont{frametitle}{size=\large}
+
+\setbeamercolor{section in toc}{fg=black}
+\setbeamercolor{block title}{fg=black}
+\setbeamercolor{caption name}{fg=black}
+\setbeamercolor{title}{fg=white}%
+\setbeamercolor{frametitle}{fg=white}%
+\setbeamercolor{item projected}{bg=themecolor}%
+\setbeamercolor{item}{fg=themecolor}
+
+\setbeamertemplate{items}[bullet]%
+\setbeamertemplate{item}[bullet]%
+\setbeamertemplate{sections/subsections in toc}[square]%
+
+
+%%% 标题页设置，参考https://github.com/thomasWeise/ustcSlides %%%
+\defbeamertemplate*{title page}{}[1][]{%
+\strut\vfill\strut%
+\begin{centering}%
+\vfill\vfill\vfill\vfill%
+{\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle}%
+\vfill%
+\begingroup{\ifx\insertsubtitle\empty%
+\else%
+\usebeamercolor[fg]{title}\usebeamerfont{title}\large{\insertsubtitle}
+\vfill%
+\fi}\endgroup%
+\begin{beamercolorbox}[center,#1]{author}%
+\usebeamercolor[bg]{frametitle}\usebeamerfont{author}\insertauthor%
+\end{beamercolorbox}\vfill%
+\begin{beamercolorbox}[center,#1]{institute}%
+\usebeamercolor[fg]{title}\usebeamerfont{institute}\insertinstitute%
+\end{beamercolorbox}\vfill%
+\begin{beamercolorbox}[center,#1]{date}%
+\usebeamercolor[fg]{title}\usebeamerfont{date}\insertdate%
+\end{beamercolorbox}%
+\end{centering}
+\vfill\vfill\vfill\vfill\vfill%
+}%
+%
+%
+\gdef\startPresentation#1{%
+%
+\setbeamertemplate{footline}{}%
+%
+\usebackgroundtemplate{%
+\hspace{-0.005\paperwidth}%
+\vspace{-0.005\paperheight}%
+\ifbeamer@ustcblue
+\includegraphics[width=1.01\paperwidth,height=1.01\paperheight]{%
+./figures/ustc_cover_1}
+\fi
+\ifbeamer@ustcred
+\includegraphics[width=1.01\paperwidth,height=1.01\paperheight]{%
+./figures/ustc_cover_2}
+\fi
+\ifbeamer@black
+\includegraphics[width=1.01\paperwidth,height=1.01\paperheight]{%
+./figures/ustc_cover_3}
+\fi
+\ifbeamer@violet
+\includegraphics[width=1.01\paperwidth,height=1.01\paperheight]{%
+./figures/ustc_cover_4}
+\fi
+\ifbeamer@blue
+\includegraphics[width=1.01\paperwidth,height=1.01\paperheight]{%
+./figures/ustc_cover_5}
+\fi
+}%
+%
+\begin{frame}%
+\titlepage%
+\end{frame}%
+%
+%
+\defbeamertemplate*{footline}{USTC}{%
+{\color{white}%
+\strut\hfill%
+{\insertshorttitle}%
+\hfill\hfill%
+{\insertshortauthor}({\insertshortinstitute})\qquad{\insertshortdate{}}%
+\hfill\hfill%
+{{\insertframenumber{}}/{\inserttotalframenumber}}%
+\hfill\strut
+\vskip2pt%
+}}%
+%
+%
+\ifbeamer@ustcblue
+\pgfdeclareimage[width=1.01\paperwidth,height=1.01\paperheight]{ustc_background}{%
+./figures/ustc_background_1}
+\fi
+\ifbeamer@ustcred
+\pgfdeclareimage[width=1.01\paperwidth,height=1.01\paperheight]{ustc_background}{%
+./figures/ustc_background_2}
+\fi
+\ifbeamer@black
+\pgfdeclareimage[width=1.01\paperwidth,height=1.01\paperheight]{ustc_background}{%
+./figures/ustc_background_3}
+\fi
+\ifbeamer@violet
+\pgfdeclareimage[width=1.01\paperwidth,height=1.01\paperheight]{ustc_background}{%
+./figures/ustc_background_4}
+\fi
+\ifbeamer@blue
+\pgfdeclareimage[width=1.01\paperwidth,height=1.01\paperheight]{ustc_background}{%
+./figures/ustc_background_5}
+\fi
+%
+\usebackgroundtemplate{%
+\hspace{-0.005\paperwidth}%
+\vspace{-0.005\paperheight}%
+\pgfuseimage{ustc_background}}%
+%
+\begin{frame}%
+\frametitle{大纲}%
+\tableofcontents[subsectionstyle=hide/hide/hide]%
+#1%
+\end{frame}%
+%
+}%

@@ -1,148 +1,108 @@
-﻿%!TEX encoding = UTF-8 Unicode
-%!TEX program = latexmk
+%!TEX program = xelatex
 
-\documentclass[12pt]{ctexbeamer}	%声明文档类型为beamer幻灯片
-\mode <presentation>
-\usetheme{USTC}%%Warsaw [secheader]
+\documentclass[12pt]{ctexbeamer}
+\usepackage[ustcblue]{ustcbeamer}%可通过更改选项来更改主题颜色
 
-% \usepackage{multimedia}	%让文档支持多媒体
-% \usepackage{hyperref}	%让文档支持超链接
-% \usepackage{booktabs}	%让文档支持三线表格
-% \usepackage{amsmath}	%ams可以让文档支持数学公式
-% \usepackage{amsfonts}
-% \usepackage{amssymb}
-% \usepackage{color}
-% \usepackage{graphicx,psfrag}
+%%%模板说明%%%%
+%模板ustc_beamer中定义了五个选项供选择：ustcblue,ustcred,black,violet,blue；分别对应了五种主题颜色。
+%建议使用ustcblue和ustcred，两者均为科大党委宣传部规定的校徽标准配色，参考http://lswhw.ustc.edu.cn/index.php/index/info/3370 。两个标准配色分别为：蓝cmyk(100,80,0,0)、红cmyk(0,100,100,0)，在LaTex中使用需要除以100。
+%本模板参考了https://github.com/thomasWeise/ustcSlides 的Slides，故而保留了Thomas Weise先生的原始配色（blue）。
+%不怎么建议使用黑色（black），看上去像讣告。
+%有其他的配色需求可在github上反馈。
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{话者识别中失配信息补偿理论和方法研究}	%幻灯片标题
-\author[刘青松]{刘青松}
-\def\advisor{戴蓓蒨教授}
-
-\institute[中国科学技术大学]{
-语音信号与信息处理实验室\\
-中国科学技术大学，电子科学与技术系
-}	%作者单位
+\title[底部简明标题]{
+    量子力学熵形式的不确定关系
+}
+\author[底部演讲者]{报告人：XXX}
+\institute[USTC]{
+理论物理研究组\\
+中国科学技术大学，近代物理系
+}
 \date{\today}
 
-\setcounter{tocdepth}{1}
-
 \begin{document}
-\begin{frame}
-\titlepage
-\end{frame}
+
+\startPresentation{}
 
 \AtBeginSection[]{
-  \frame{
+  \begin{frame}%
     \frametitle{大纲}
     \tableofcontents[currentsection]
-  }
+  \end{frame}
 }
-
+\section{研究背景}
 \begin{frame}
-\frametitle{大纲}
-\tableofcontents
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{概述}
-\begin{frame}
-\frametitle{概述}
-研究意义
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{存在的问题}
-
-\begin{frame}
-\frametitle{一二三四五问题}
-\begin{itemize}
-\item 一二三四五
-\item \alert{六七八九十}
-\end{itemize}
-\pause
-一二三四五
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{方法一}
-
-\begin{frame}
-\frametitle{USTC}
-
-\begin{itemize}
-\item<1-> USTC,ABCD EFG HIJK LMN OPQ RST UVW XYZ
-\item<2-> USTC,abcd efg hijk lmn opq rst uvw xyz
-\end{itemize}
-
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{方法二}
-
-\begin{frame}
-\frametitle{公式}
-$$M=m_{ubm}+Dy$$
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{方法三}
-
-\begin{frame}
-\frametitle{Block}
-\begin{block}{Block1}
-	\begin{itemize}
-		\item 方法三
-        \item 方法三
-	\end{itemize}
-\end{block}
-\pause
-\begin{block}{Block1}
-	\begin{itemize}
-		\item 方法三
-        \item 方法三
-	\end{itemize}
-\end{block}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{总结与展望}
-
-\begin{frame}
-\frametitle{实验结果}
-\begin{columns}
-\begin{column}{0.50\textwidth}
-% \epsfig{figure=ustc_logo_fig_new,width=\textwidth}
-\includegraphics[width=\textwidth]{ustc_logo_fig.pdf}
-\end{column}
-\begin{column}{0.50\textwidth}
-\begin{block}{结论}
-\begin{itemize}
-\item 实验结果如左图所示
-\item 实验结果如左图所示
-\item 实验结果如左图所示
-\item 实验结果如左图所示
-\item 实验结果如左图所示
-\item 实验结果如左图所示
-\end{itemize}
-\end{block}
-\end{column}
-\end{columns}
+  \frametitle{研究背景}
+  研究背景：
+  \begin{itemize}
+    \item 一
+    \item 二
+    \item 三
+  \end{itemize}
 \end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{理论模型}
+
+\begin{frame}
+  \frametitle{理论模型}
+  \begin{equation*}
+    S\left(\rho\right)=-Tr\rho\ln\rho
+  \end{equation*}
+  \pause
+  由此得到……
+
+\end{frame}
+
+
+\section{研究方法}
+
+\begin{frame}
+  \frametitle{研究方法}
+  \begin{block}{方法一}
+    \begin{itemize}
+      \item abc
+      \item def
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{方法二}
+    \begin{itemize}
+      \item abc
+      \item def
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+
+\section{总结展望}
+
+\begin{frame}
+  \frametitle{总结展望}
+  \begin{columns}
+    \begin{column}{0.50\textwidth}
+      \begin{figure}
+        \includegraphics[width=0.8\textwidth]{figures/ustc_logo.pdf}
+        \caption{标题}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \begin{block}{结论}
+        \begin{itemize}
+          \item 结论 1
+          \item 结论 2
+          \item 结论 3
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 
 \begin{frame}
-\centerline{\Large 谢谢!}
+  \centerline{\Large 谢谢!}
 \end{frame}
+
 
 \end{document}
