@@ -6,7 +6,7 @@
 
 ## 使用说明
 
-`beamer.tex` 文件运行 `xelatex` 即可。模板 ustcbeamer 中定义了五个选项供选择：`ustcblue`, `ustcred`, `black`, `violet`, `blue`；分别对应了五种主题颜色。
+`main.tex` 文件运行 `xelatex` 即可。模板 ustcbeamer 中定义了五个选项供选择：`ustcblue`, `ustcred`, `black`, `violet`, `blue`；分别对应了五种主题颜色。
 
 建议使用 `ustcblue` 和 `ustcred`，两者均为[科大党委宣传部](http://lswhw.ustc.edu.cn/index.php/index/info/3370)规定的校徽标准红蓝配色。两个标准配色分别为：蓝 `cmyk(100,80,0,0)`、红 `cmyk(0,100,100,0)`，在 LaTeX 中使用需要除以 100。
 
