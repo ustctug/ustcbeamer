@@ -1,6 +1,15 @@
 %!TEX program = xelatex
 
 \documentclass[12pt]{ctexbeamer}
+
+%草本
+	%draft；不含背景等，加快编译速度
+%挑选一些frame编译
+	%\includeonlyframes{example1}
+	%\frame[label=example1] {This frame will be included. }
+%缩印本
+	%\usepackage{pgfpages}
+	%\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm,landscape]%resize to; 2 on 1; 4 on 1
 \usepackage[ustcblue]{ustcbeamer}%可通过更改选项来更改主题颜色
 
 %%%模板说明%%%%
@@ -11,6 +20,7 @@
 %有其他的配色需求可在github上反馈。
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \title[底部简明标题]{
     量子力学熵形式的不确定关系
 }
@@ -20,17 +30,48 @@
 中国科学技术大学，近代物理系
 }
 \date{\today}
-
 \begin{document}
+%\section<⟨mode specification⟩>[⟨short section name⟩]{⟨section name⟩}
+%小于等于六个标题为恰当的标题
 
-\startPresentation{}
-
+%--------------------
+%标题页
+%--------------------
+\maketitleframe
+%--------------------
+%目录页
+%--------------------
+%beamer 101
+\begin{frame}%
+	\frametitle{大纲}%
+	\tableofcontents[hideallsubsections]%仅显示节
+	%\tableofcontents%显示所节和子节
+\end{frame}%
+%--------------------
+%节目录页
+%--------------------
 \AtBeginSection[]{
+\setbeamertemplate{footline}[footlineoff]%取消页脚
   \begin{frame}%
     \frametitle{大纲}
-    \tableofcontents[currentsection]
+	%\tableofcontents[currentsection,subsectionstyle=show/hide/hide]%高亮当前节，不显示子节
+    \tableofcontents[currentsection,subsectionstyle=show/show/hide]%show,shaded,hide
   \end{frame}
+\setbeamertemplate{footline}[footlineon]%添加页脚
 }
+%--------------------
+%子节目录页
+%--------------------
+\AtBeginSubsection[]{
+\setbeamertemplate{footline}[footlineoff]%取消页脚
+  \begin{frame}%
+    \frametitle{大纲}
+	%\tableofcontents[currentsection,subsectionstyle=show/hide/hide]%高亮当前节，不显示子节
+    \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]%show,shaded,hide
+  \end{frame}
+\setbeamertemplate{footline}[footlineon]%添加页脚
+}
+
 \section{研究背景}
 \begin{frame}
   \frametitle{研究背景}
@@ -44,9 +85,19 @@
 
 
 \section{理论模型}
-
+\subsection{模型1}
 \begin{frame}
-  \frametitle{理论模型}
+  \frametitle{理论模型1}
+  \begin{equation*}
+    S\left(\rho\right)=-Tr\rho\ln\rho
+  \end{equation*}
+  \pause
+  由此得到……
+
+\end{frame}
+\subsection{模型2}
+\begin{frame}
+  \frametitle{理论模型2}
   \begin{equation*}
     S\left(\rho\right)=-Tr\rho\ln\rho
   \end{equation*}
@@ -99,10 +150,8 @@
   \end{columns}
 \end{frame}
 
-
 \begin{frame}
   \centerline{\Large 谢谢!}
 \end{frame}
-
 
 \end{document}
