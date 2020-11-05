@@ -1,3 +1,4 @@
+\RequirePackage{tikz}
 \newif\ifbeamer@ustcblue
 \newif\ifbeamer@ustcred
 \newif\ifbeamer@black
@@ -14,41 +15,30 @@
 \ProcessOptions\relax
 
 %定义主题七色
-\definecolor{themeHong}{cmyk}{0,1,1,0} 
-\definecolor{themeCheng}{RGB}{247,88,33} 
-\definecolor{themeHuang}{RGB}{247,212,53} 
-\definecolor{themeLv}{RGB}{6,84,19} 
-\definecolor{themeLan}{cmyk}{1,0.8,0,0} 
-%\definecolor{themeDian}{cmyk}{} 
-\definecolor{themeZi}{cmyk}{0.8,1,0,0} 
+\definecolor{themeHong}{cmyk}{0,1,1,0}
+\definecolor{themeCheng}{RGB}{247,88,33}
+\definecolor{themeHuang}{RGB}{247,212,53}
+\definecolor{themeLv}{RGB}{6,84,19}
+\definecolor{themeLan}{cmyk}{1,0.8,0,0}
+\definecolor{themeZi}{cmyk}{0.8,1,0,0}
 
 \ifbeamer@ustcblue
   \definecolor{themecolor}{cmyk}{1,0.8,0,0}     %科大蓝色
-  \def\ustccover{./figures/ustc_cover_1}
-  \def\ustcbackground{./figures/ustc_background_1}
 \fi
 \ifbeamer@ustcred
   \definecolor{themecolor}{cmyk}{0,1,1,0}       %科大红色
-  \def\ustccover{./figures/ustc_cover_2}
-  \def\ustcbackground{./figures/ustc_background_2}
 \fi
 \ifbeamer@black
   \definecolor{themecolor}{HTML}{000000}        %黑色
-  \def\ustccover{./figures/ustc_cover_3}
-  \def\ustcbackground{./figures/ustc_background_3}
 \fi
 \ifbeamer@violet
   \definecolor{themecolor}{cmyk}{0.8,1,0,0}     %紫色
-  \def\ustccover{./figures/ustc_cover_4}
-  \def\ustcbackground{./figures/ustc_background_4}
 \fi
 \ifbeamer@blue
   \definecolor{themecolor}{cmyk}{0.95,0.45,0,0} %蓝色
-  \def\ustccover{./figures/ustc_cover_5}
-  \def\ustcbackground{./figures/ustc_background_5}
 \fi
 
-%\useoutertheme{infolines}%
+%\useoutertheme{infolines}
 %\usefonttheme{serif}          %使用衬线字体，自行设置
 %\setmainfont{Times New Roman} %全局英文字体，自行设置
 %\setCJKmainfont{STKaiti}      %全局中文字体，自行设置
@@ -60,9 +50,9 @@
 \setbeamercolor{section in toc}{fg=black}
 \setbeamercolor{block title}{fg=black}
 \setbeamercolor{caption name}{fg=black}
-\setbeamercolor{title}{fg=white}%
-\setbeamercolor{frametitle}{fg=white}%
-\setbeamercolor{item projected}{bg=themecolor}%
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{frametitle}{fg=white}
+\setbeamercolor{item projected}{bg=themecolor}
 \setbeamercolor{item}{fg=themecolor}
 
 \setbeamertemplate{items}[bullet]%
@@ -76,27 +66,27 @@
 %标题页
 \defbeamertemplate*{title page}{}[1][]{%
 \strut\vfill\strut%
-\begin{centering}%
+\begin{centering}
 \vfill\vfill\vfill\vfill%
-{\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle}%
+{\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle}
 \vfill%
 \begingroup{\ifx\insertsubtitle\empty%
 \else%
 \usebeamercolor[fg]{title}\usebeamerfont{title}\large{\insertsubtitle}
 \vfill%
 \fi}\endgroup%
-\begin{beamercolorbox}[center,#1]{author}%
+\begin{beamercolorbox}[center,#1]{author}
 \usebeamercolor[bg]{frametitle}\usebeamerfont{author}\insertauthor%
 \end{beamercolorbox}\vfill%
-\begin{beamercolorbox}[center,#1]{institute}%
+\begin{beamercolorbox}[center,#1]{institute}
 \usebeamercolor[fg]{title}\usebeamerfont{institute}\insertinstitute%
 \end{beamercolorbox}\vfill%
-\begin{beamercolorbox}[center,#1]{date}%
+\begin{beamercolorbox}[center,#1]{date}
 \usebeamercolor[fg]{title}\usebeamerfont{date}\insertdate%
-\end{beamercolorbox}%
+\end{beamercolorbox}
 \end{centering}
 \vfill\vfill\vfill\vfill\vfill%
-}%
+}
 %页脚
 \defbeamertemplate*{footline}{footlineoff}{}
 \defbeamertemplate*{footline}{footlineon}{%
@@ -108,10 +98,10 @@
 	\insertsectionnavigationhorizontal{.5\textwidth}{}{}
 	\end{beamercolorbox}
 	\begin{beamercolorbox}[wd=.25\paperwidth,right,dp=2ex]{shorttitle in footline}
-	\quad\insertshorttitle
+	\quad\insertshorttitle%
 	\end{beamercolorbox}
 	\begin{beamercolorbox}[wd=.1\paperwidth,right,dp=2ex]{shortauthor in footline}
-	\insertshortauthor
+	\insertshortauthor%
   \end{beamercolorbox}
 	\begin{beamercolorbox}[wd=.08\paperwidth,right,dp=2ex]{page in footline}
 	{\insertframenumber{}}/{\inserttotalframenumber\quad}
@@ -136,13 +126,13 @@
 \setbeamertemplate{subsection in toc shaded}[default][35]%被暗淡的其他标题；调节系数为fg!35!bg
 
 %beamerbaseauxtemplates.sty
-\defbeamertemplate*{subsection in toc}{subsectionhorizontal}%
+\defbeamertemplate*{subsection in toc}{subsectionhorizontal}
 {\leavevmode%
 	\ifnum\inserttocsubsectionnumber=1
-	\hspace{3.7ex}%
+	\hspace{3.7ex}
  	\else
 	\fi
-    \usebeamercolor[bg]{subsection number projected}%
+    \usebeamercolor[bg]{subsection number projected}
     \vrule width1ex height1ex\kern1ex\inserttocsubsection}
 \setbeamertemplate{subsection in toc}[subsectionhorizontal]
 
@@ -150,26 +140,22 @@
 %命令
 %--------------------
 %开始演示
-\newcommand{\maketitleframe}{
+\def\globalscale{0.843} % 272.126/322.819 略微放大为消除原 pdf 左图留白增加空间
+\newcommand{\maketitleframe}{%
 	%取消footline,sidebar
 	\setbeamertemplate{footline}[footlineoff]
 	%%设置本命令以后的背景如下
 	\usebackgroundtemplate{%
-		\hspace{-0.005\paperwidth}%背景文件左边有一点白
-		\vspace{-0.005\paperheight}%
-			\includegraphics[width=1.01\paperwidth,height=1.01\paperheight]{\ustccover}
-	}%
+		\hspace{-0.032\paperwidth} % 消除原 pdf 左图留白
+    \input{subfiles/ustccover} % 此代码由 https://github.com/kjellmf/svg2tikz 生成
+	}
 	%封面页
-	\begin{frame}%
+	\begin{frame}
 		\maketitle%
-	\end{frame}%
+	\end{frame}
 	%设置本命令以后的背景如下
 	\usebackgroundtemplate{%
-		\hspace{-0.005\paperwidth}%
-		\vspace{-0.005\paperheight}%
-			\includegraphics[width=1.01\paperwidth,height=1.01\paperheight]{\ustcbackground}
-	}%
-}%
-%
-
-
+		\hspace{-0.032\paperwidth}
+    \input{subfiles/ustcbackground}
+	}
+}
