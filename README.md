@@ -6,13 +6,11 @@
 
 ## 使用说明
 
-`main.tex` 文件运行 `xelatex` 即可。模板 ustcbeamer 中定义了五个选项供选择：`ustcblue`, `ustcred`, `black`, `violet`, `blue`；分别对应了五种主题颜色。
+主文件 `main.tex`， 使用 `xelatex` 引擎编译。
 
-建议使用 `ustcblue` 和 `ustcred`，两者均为[科大党委宣传部](http://lswhw.ustc.edu.cn/index.php/index/info/3370)规定的校徽标准红蓝配色。两个标准配色分别为：蓝 `cmyk(100,80,0,0)`、红 `cmyk(0,100,100,0)`，在 LaTeX 中使用需要除以 100。
+宏包 `ustcbeamer` 的默认选项 `usepdf` 使用PDF形式的背景文件（在子文件夹theme中），主题色为USTC蓝且不可更改。如若要使用其他颜色的主题，请使用选项 `usetikz`，则文档会默认加载TikZ代码生成的背景；`usetikz`搭配了另外四个选项 `ustcblue`,`ustcred`,`ustviolet`,`ustcblack` 对应四种不同的主题色。有兴趣的同学可以在源代码中自定义自己想要的主题色。
 
-本模板参考了 [thomasWeise/ustcSlides](https://github.com/thomasWeise/ustcSlides) 的，故而保留了 Thomas Weise 先生的原始配色（blue）。
-
-此外，个人不太建议使用黑色（black），看上去像讣告。
+注意，`usetikz` 会很大程度上损失编译速度，建议写文档的时候使用 `usepdf`，内容写完后再改成 `usetikz`，然后挑选自己喜爱的主题色选项。
 
 
 ## 下载地址
@@ -22,6 +20,6 @@
 
 ## 其他
 
-本人第一次做 LaTeX 模板，有什么问题望及时反馈，谢谢！
+采纳了 [Freed-Wu](https://github.com/Freed-Wu) 的建议，使用 `svg2tikz` 来生成TikZ格式的背景文件，得以保留各类主题色的同时还能摆脱繁重的背景PDF文件，在此致谢！
 
-有其他的颜色或格式的需求可在github上反馈。
+欢迎同学们反馈其他问题。
