@@ -8,9 +8,17 @@
 
 主文件 `main.tex`， 使用 `xelatex` 引擎编译。
 
-宏包 `ustcbeamer` 的默认选项 `usepdf` 使用PDF形式的背景文件（在子文件夹theme中），主题色为USTC蓝且不可更改。如若要使用其他颜色的主题，请使用选项 `usetikz`，则文档会默认加载TikZ代码生成的背景；`usetikz`搭配了另外四个选项 `ustcblue`,`ustcred`,`ustcviolet`,`ustcblack` 对应四种不同的主题色。有兴趣的同学可以在源代码中自定义自己想要的主题色。
+宏包使用了TikZ代码形式的背景文件（在子文件夹theme中），默认选项 `bluetheme` 是科大校徽的蓝色；此外 `ustcbeamer` 还内置了红色和黑色主题 `redtheme`、`blacktheme`。
 
-注意，`usetikz` 会很大程度上损失编译速度，建议写文档的时候使用 `usepdf`，内容写完后再改成 `usetikz`，然后挑选自己喜爱的主题色选项。
+## 自定义你的主题颜色
+
+一旦在 `main.tex` 中载入 `ustcbeamer` 后使用了下述命令就会覆盖 `ustcbeamer` 指定的内置颜色选项，你可以设置自己喜欢的RGB色值：
+
+`\definecolor{themecolor}{RGB}{0,150,150}` % 这是青色主题；
+
+`\definecolor{themecolor}{rgb}{0,0.5,0.3}` % 这是深绿色主题；
+
+注意小写rgb和大写RGB表示的色值相差255倍，即RGB{255,255,255}=rgb{1,1,1}；建议自定义的主题颜色选择偏深色。
 
 
 ## 下载地址
