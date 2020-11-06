@@ -1,16 +1,20 @@
 %!TEX program = xelatex
-
 \documentclass{ctexbeamer}
 
-\usepackage[usepdf]{ustcbeamer}% 使用PDF形式的背景文件，编译速度快
-% \usepackage[usetikz,ustcred]{ustcbeamer} % 使用tikz形式的背景文件，式样丰富
+\usepackage[bluetheme]{ustcbeamer}
 
                           %%% ustcbeamer说明 %%%%
-% 宏包默认选项"usepdf"使用pdf形式的背景文件（在子文件夹theme中），蓝色的主题且不可更改。
+%% 宏包使用了TikZ代码形式的背景文件（在子文件夹theme中），默认选项"bluetheme"，是科大校徽的蓝色；此外ustcbeamer还内置了红色和黑色主题"redtheme","blacktheme"。
 
-% 如若要使用其他颜色的主题，请使用选项"usetikz"，则文档会默认加载 tikz 代码生成的背景
-% "usetikz"搭配了另外四个选项 "ustcblue","ustcred","ustviolet","ustcblack"。
-% "usetikz"会很大程度上损失编译速度，建议写文档的时候使用"usepdf"，内容写完后再改成"usetikz"，然后挑选自己喜爱的主题色选项。
+                        %%% 自定义你的主题颜色 %%%
+%% 一旦使用了下述命令就会覆盖ustcbeamer的内置颜色选项，你可以设置自己喜欢的RGB色值：
+% \definecolor{themecolor}{RGB}{0,150,0} % 这是绿色主题
+% \definecolor{themecolor}{RGB}{0,150,150} % 青色主题，也蛮好看的
+
+%% 注意小写rgb和大写RGB表示的色值相差255倍，即RGB{255,255,255}=rgb{1,1,1}；
+% \definecolor{themecolor}{rgb}{0,0.5,0.3} % 深绿色主题
+
+%% 建议自定义的主题颜色选择偏深色
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -19,7 +23,6 @@
 }
 \author[底部演讲者]{报告人：XXX}
 \institute[USTC]{
-理论物理研究组\\
 中国科学技术大学，近代物理系
 }
 \date{\today}

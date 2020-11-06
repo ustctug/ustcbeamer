@@ -1,51 +1,26 @@
 \ProvidesPackage{ustcbeamer}
 
 \RequirePackage{tikz}
-\def \globalscale {0.6330000}%
 
 
-\newif\iftheme@usetikz
-\newif\iftheme@usepdf
-
-
-\DeclareOption{usetikz}{
-	\theme@usetikztrue\theme@usepdffalse
+\DeclareOption{bluetheme}{
+	\definecolor{themecolor}{RGB}{0,64,152}     %科大校徽蓝
 	}
 
-\DeclareOption{ustcblue}{
-	\definecolor{themecolor}{RGB}{0,64,152}     %科大蓝色
-	\definecolor{themecolor1}{RGB}{243,242,243} %灰色
-	\definecolor{themecolor2}{RGB}{234,235,237} %分割线颜色
+\DeclareOption{redtheme}{
+	\definecolor{themecolor}{RGB}{150,0,0}     %红色
 	}
 
-\DeclareOption{ustcred}{
-	\definecolor{themecolor}{RGB}{184,29,35}     %科大红色
-	\definecolor{themecolor1}{RGB}{243,242,243}%灰色
-	\definecolor{themecolor2}{RGB}{234,235,237}%
-	}
-
-\DeclareOption{ustcviolet}{
-	\definecolor{themecolor}{RGB}{85,27,134}    %紫色
-	\definecolor{themecolor1}{RGB}{243,242,243}%灰色
-	\definecolor{themecolor2}{RGB}{234,235,237}%
-	}
-
-\DeclareOption{ustcblack}{
+\DeclareOption{blacktheme}{
 	\definecolor{themecolor}{RGB}{0,0,0}     %黑色
-	\definecolor{themecolor1}{RGB}{243,242,243}%灰色
-	\definecolor{themecolor2}{RGB}{234,235,237}%
-	}
-	
-
-\DeclareOption{usepdf}{
-	\theme@usepdftrue\theme@usetikzfalse
-	\definecolor{themecolor}{RGB}{0,64,152}     %科大蓝色
 	}
 
-\ExecuteOptions{usepdf,ustcblue}
+\ExecuteOptions{bluetheme}
 \ProcessOptions\relax
 
-
+\def \globalscale {0.6330000}               %背景布大小
+\definecolor{themecolor1}{RGB}{243,242,243} %灰色
+\definecolor{themecolor2}{RGB}{234,235,237} %分割线颜色
 %\useoutertheme{infolines}%
 %\usefonttheme{serif}          %使用衬线字体，自行设置
 %\setmainfont{Times New Roman} %全局英文字体，自行设置
@@ -154,12 +129,7 @@
 	\setbeamertemplate{footline}[footlineoff]
 	%%设置本命令以后的背景如下
 	\usebackgroundtemplate{%
-		\iftheme@usetikz
 			\input{./theme/ustc_cover.tex}
-		\fi
-		\iftheme@usepdf
-			\includegraphics{./theme/ustc_cover.pdf}
-		\fi
 	}%
 	%封面页
 	\begin{frame}%
@@ -167,12 +137,7 @@
 	\end{frame}%
 	%设置本命令以后的背景如下
 	\usebackgroundtemplate{%
-		\iftheme@usetikz
 			\input{./theme/ustc_background.tex}
-		\fi
-		\iftheme@usepdf
-			\includegraphics{./theme/ustc_background.pdf}
-		\fi
 	}%
 }%
 %
