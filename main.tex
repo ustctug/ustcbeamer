@@ -1,28 +1,21 @@
 %!TEX program = xelatex
 
-\documentclass[12pt]{ctexbeamer}
+\documentclass{ctexbeamer}
 
-%草本
-	%draft；不含背景等，加快编译速度
-%挑选一些frame编译
-	%\includeonlyframes{example1}
-	%\frame[label=example1] {This frame will be included. }
-%缩印本
-	%\usepackage{pgfpages}
-	%\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm,landscape]%resize to; 2 on 1; 4 on 1
-\usepackage[ustcblue]{ustcbeamer}%可通过更改选项来更改主题颜色
+\usepackage[usepdf]{ustcbeamer}% 使用PDF形式的背景文件，编译速度快
+% \usepackage[usetikz,ustcred]{ustcbeamer} % 使用tikz形式的背景文件，式样丰富
 
-%%%模板说明%%%%
-%模板ustc_beamer中定义了五个选项供选择：ustcblue,ustcred,black,violet,blue；分别对应了五种主题颜色。
-%建议使用ustcblue和ustcred，两者均为科大党委宣传部规定的校徽标准配色，参考http://lswhw.ustc.edu.cn/index.php/index/info/3370 。两个标准配色分别为：蓝cmyk(100,80,0,0)、红cmyk(0,100,100,0)，在LaTex中使用需要除以100。
-%本模板参考了https://github.com/thomasWeise/ustcSlides 的Slides，故而保留了Thomas Weise先生的原始配色（blue）。
-%不怎么建议使用黑色（black），看上去像讣告。
-%有其他的配色需求可在github上反馈。
+                          %%% ustcbeamer说明 %%%%
+% 宏包默认选项"usepdf"使用pdf形式的背景文件（在子文件夹theme中），蓝色的主题且不可更改。
+
+% 如若要使用其他颜色的主题，请使用选项"usetikz"，则文档会默认加载 tikz 代码生成的背景
+% "usetikz"搭配了另外四个选项 "ustcblue","ustcred","ustviolet","ustcblack"。
+% "usetikz"会很大程度上损失编译速度，建议写文档的时候使用"usepdf"，内容写完后再改成"usetikz"，然后挑选自己喜爱的主题色选项。
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \title[底部简明标题]{
-    量子力学熵形式的不确定关系
+    自旋压缩的量子控制理论及应用
 }
 \author[底部演讲者]{报告人：XXX}
 \institute[USTC]{
@@ -81,6 +74,7 @@
     \item 二
     \item 三
   \end{itemize}
+
 \end{frame}
 
 
@@ -151,6 +145,7 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{致谢}
   \centerline{\Large 谢谢!}
 \end{frame}
 

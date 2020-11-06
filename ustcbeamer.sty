@@ -1,59 +1,57 @@
-\newif\ifbeamer@ustcblue
-\newif\ifbeamer@ustcred
-\newif\ifbeamer@black
-\newif\ifbeamer@violet
-\newif\ifbeamer@blue
+\ProvidesPackage{ustcbeamer}
 
-\DeclareOption{ustcblue}{\beamer@ustcbluetrue\beamer@ustcredfalse\beamer@blackfalse\beamer@violetfalse\beamer@bluefalse}
-\DeclareOption{ustcred}{\beamer@ustcbluefalse\beamer@ustcredtrue\beamer@blackfalse\beamer@violetfalse\beamer@bluefalse}
-\DeclareOption{black}{\beamer@ustcbluefalse\beamer@ustcredfalse\beamer@blacktrue\beamer@violetfalse\beamer@bluefalse}
-\DeclareOption{violet}{\beamer@ustcbluefalse\beamer@ustcredfalse\beamer@blackfalse\beamer@violettrue\beamer@bluefalse}
-\DeclareOption{blue}{\beamer@ustcbluefalse\beamer@ustcredfalse\beamer@blackfalse\beamer@violetfalse\beamer@bluetrue}
+\RequirePackage{tikz}
+\def \globalscale {0.6330000}%
 
-\ExecuteOptions{ustcblue}
+
+\newif\iftheme@usetikz
+\newif\iftheme@usepdf
+
+
+\DeclareOption{usetikz}{
+	\theme@usetikztrue\theme@usepdffalse
+	}
+
+\DeclareOption{ustcblue}{
+	\definecolor{themecolor}{RGB}{0,64,152}     %科大蓝色
+	\definecolor{themecolor1}{RGB}{243,242,243} %灰色
+	\definecolor{themecolor2}{RGB}{234,235,237} %分割线颜色
+	}
+
+\DeclareOption{ustcred}{
+	\definecolor{themecolor}{RGB}{184,29,35}     %科大红色
+	\definecolor{themecolor1}{RGB}{243,242,243}%灰色
+	\definecolor{themecolor2}{RGB}{234,235,237}%
+	}
+
+\DeclareOption{ustcviolet}{
+	\definecolor{themecolor}{RGB}{85,27,134}    %紫色
+	\definecolor{themecolor1}{RGB}{243,242,243}%灰色
+	\definecolor{themecolor2}{RGB}{234,235,237}%
+	}
+
+\DeclareOption{ustcblack}{
+	\definecolor{themecolor}{RGB}{0,0,0}     %黑色
+	\definecolor{themecolor1}{RGB}{243,242,243}%灰色
+	\definecolor{themecolor2}{RGB}{234,235,237}%
+	}
+	
+
+\DeclareOption{usepdf}{
+	\theme@usepdftrue\theme@usetikzfalse
+	\definecolor{themecolor}{RGB}{0,64,152}     %科大蓝色
+	}
+
+\ExecuteOptions{usepdf,ustcblue}
 \ProcessOptions\relax
 
-%定义主题七色
-\definecolor{themeHong}{cmyk}{0,1,1,0} 
-\definecolor{themeCheng}{RGB}{247,88,33} 
-\definecolor{themeHuang}{RGB}{247,212,53} 
-\definecolor{themeLv}{RGB}{6,84,19} 
-\definecolor{themeLan}{cmyk}{1,0.8,0,0} 
-%\definecolor{themeDian}{cmyk}{} 
-\definecolor{themeZi}{cmyk}{0.8,1,0,0} 
-
-\ifbeamer@ustcblue
-  \definecolor{themecolor}{cmyk}{1,0.8,0,0}     %科大蓝色
-  \def\ustccover{./figures/ustc_cover_1}
-  \def\ustcbackground{./figures/ustc_background_1}
-\fi
-\ifbeamer@ustcred
-  \definecolor{themecolor}{cmyk}{0,1,1,0}       %科大红色
-  \def\ustccover{./figures/ustc_cover_2}
-  \def\ustcbackground{./figures/ustc_background_2}
-\fi
-\ifbeamer@black
-  \definecolor{themecolor}{HTML}{000000}        %黑色
-  \def\ustccover{./figures/ustc_cover_3}
-  \def\ustcbackground{./figures/ustc_background_3}
-\fi
-\ifbeamer@violet
-  \definecolor{themecolor}{cmyk}{0.8,1,0,0}     %紫色
-  \def\ustccover{./figures/ustc_cover_4}
-  \def\ustcbackground{./figures/ustc_background_4}
-\fi
-\ifbeamer@blue
-  \definecolor{themecolor}{cmyk}{0.95,0.45,0,0} %蓝色
-  \def\ustccover{./figures/ustc_cover_5}
-  \def\ustcbackground{./figures/ustc_background_5}
-\fi
 
 %\useoutertheme{infolines}%
 %\usefonttheme{serif}          %使用衬线字体，自行设置
 %\setmainfont{Times New Roman} %全局英文字体，自行设置
 %\setCJKmainfont{STKaiti}      %全局中文字体，自行设置
 \defbeamertemplate*{headline}{BLANK}{}
-\defbeamertemplate*{navigation symbols}{} %隐藏导航按钮
+% \defbeamertemplate*{navigation symbols}{} %隐藏导航按钮
 
 \setbeamerfont{frametitle}{size=\large}
 
@@ -150,14 +148,18 @@
 %命令
 %--------------------
 %开始演示
+
 \newcommand{\maketitleframe}{
 	%取消footline,sidebar
 	\setbeamertemplate{footline}[footlineoff]
 	%%设置本命令以后的背景如下
 	\usebackgroundtemplate{%
-		\hspace{-0.005\paperwidth}%背景文件左边有一点白
-		\vspace{-0.005\paperheight}%
-			\includegraphics[width=1.01\paperwidth,height=1.01\paperheight]{\ustccover}
+		\iftheme@usetikz
+			\input{./theme/ustc_cover.tex}
+		\fi
+		\iftheme@usepdf
+			\includegraphics{./theme/ustc_cover.pdf}
+		\fi
 	}%
 	%封面页
 	\begin{frame}%
@@ -165,9 +167,12 @@
 	\end{frame}%
 	%设置本命令以后的背景如下
 	\usebackgroundtemplate{%
-		\hspace{-0.005\paperwidth}%
-		\vspace{-0.005\paperheight}%
-			\includegraphics[width=1.01\paperwidth,height=1.01\paperheight]{\ustcbackground}
+		\iftheme@usetikz
+			\input{./theme/ustc_background.tex}
+		\fi
+		\iftheme@usepdf
+			\includegraphics{./theme/ustc_background.pdf}
+		\fi
 	}%
 }%
 %
