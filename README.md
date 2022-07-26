@@ -20,14 +20,13 @@
 
 注意小写rgb和大写RGB表示的色值相差255倍，即RGB{255,255,255}=rgb{1,1,1}；建议自定义的主题颜色选择偏深色。
 
+## 宽高比设置
+
+`ctexbeamer`文档类支持各种宽高比，但本模板只适配了 4:3 和 16:9 的宽高比背景。添加选项`aspectratio=169`或`aspectratio=43`可以更改宽高比，默认是 4:3。
 
 ## 下载地址
 
 - GitHub Releases：https://github.com/ustctug/ustcbeamer/releases
 
-
-## 其他
-
-采纳了 [Freed-Wu](https://github.com/Freed-Wu) 的建议，使用 `svg2tikz` 来生成TikZ格式的背景文件，得以保留各类主题色的同时还能摆脱繁重的背景PDF文件，在此致谢！
 
 欢迎同学们反馈其他问题。
