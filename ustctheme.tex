@@ -1,0 +1,28 @@
+% !TeX root = ./main.tex
+
+% 自适应16:9的宽高比设置
+\makeatletter
+\@ifclasswith{ctexbeamer}{aspectratio=169}{
+		\def\backxscale{4/3}\def\backyscale{1}\def\ustcshift{30}
+	}{
+		\def\backxscale{1.068}\def\backyscale{1.068}\def\ustcshift{0}
+	}
+\makeatother
+
+\newcommand{\maketitleframe}{
+	%取消footline,sidebar
+	\setbeamertemplate{footline}[footlineoff]
+	%%设置本命令以后的背景如下
+	\usebackgroundtemplate{%
+			\input{./theme/ustc_cover.tex}
+	}%
+	%封面页
+	\begin{frame}%
+		\maketitle%
+	\end{frame}%
+	%设置本命令以后的背景如下
+	\usebackgroundtemplate{%
+			\input{./theme/ustc_background.tex}
+	}%
+}%
+%

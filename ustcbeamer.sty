@@ -18,7 +18,7 @@
 \ExecuteOptions{bluetheme}
 \ProcessOptions\relax
 
-\def \globalscale {0.6330000}               %背景布大小
+
 \definecolor{themecolor1}{RGB}{243,242,243} %灰色
 \definecolor{themecolor2}{RGB}{234,235,237} %分割线颜色
 %\useoutertheme{infolines}%
@@ -26,7 +26,7 @@
 %\setmainfont{Times New Roman} %全局英文字体，自行设置
 %\setCJKmainfont{STKaiti}      %全局中文字体，自行设置
 \defbeamertemplate*{headline}{BLANK}{}
-\defbeamertemplate*{navigation symbols}{} %隐藏导航按钮
+% \defbeamertemplate*{navigation symbols}{} %隐藏导航按钮
 
 \setbeamerfont{frametitle}{size=\large}
 
@@ -119,27 +119,6 @@
     \vrule width1ex height1ex\kern1ex\inserttocsubsection}
 \setbeamertemplate{subsection in toc}[subsectionhorizontal]
 
-%--------------------
-%命令
-%--------------------
-%开始演示
 
-\newcommand{\maketitleframe}{
-	%取消footline,sidebar
-	\setbeamertemplate{footline}[footlineoff]
-	%%设置本命令以后的背景如下
-	\usebackgroundtemplate{%
-			\input{./theme/ustc_cover.tex}
-	}%
-	%封面页
-	\begin{frame}%
-		\maketitle%
-	\end{frame}%
-	%设置本命令以后的背景如下
-	\usebackgroundtemplate{%
-			\input{./theme/ustc_background.tex}
-	}%
-}%
-%
 
 

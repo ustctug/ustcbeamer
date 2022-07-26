@@ -1,10 +1,11 @@
 %!TEX program = xelatex
-\PassOptionsToPackage{quiet}{xeCJK}
-\documentclass{ctexbeamer}
-
+\documentclass[aspectratio=169]{ctexbeamer}
+% \usepackage{physics}  
+                        %%% 宽高比说明 %%%%
+%% 当前只支持4:3（默认）和16:9的宽高比设置
 \usepackage[bluetheme]{ustcbeamer}
-
-                          %%% ustcbeamer说明 %%%%
+\input{ustctheme.tex}
+                        %%% ustcbeamer说明 %%%%
 %% 宏包使用了TikZ代码形式的背景文件（在子文件夹theme中），默认选项"bluetheme"，是科大校徽的蓝色；此外ustcbeamer还内置了红色和黑色主题"redtheme","blacktheme"。
 
                         %%% 自定义你的主题颜色 %%%
@@ -20,7 +21,7 @@
 
 
 \title[底部简明标题]{
-    自旋压缩的量子控制理论及应用
+    开放量子体系理论
 }
 \author[底部演讲者]{报告人：XXX}
 \institute[USTC]{
@@ -86,8 +87,9 @@
 \subsection{模型1}
 \begin{frame}
   \frametitle{理论模型1}
+  考虑开放系统主方程
   \begin{equation*}
-    S\left(\rho\right)=-Tr\rho\ln\rho
+    \frac{d\rho}{d t}=-i \left[H,\rho\right]+\kappa\left(2a\rho a^{\dagger}-a^{\dagger}a\rho-\rho a^{\dagger}a\right)
   \end{equation*}
   \pause
   由此得到……
@@ -96,12 +98,16 @@
 \subsection{模型2}
 \begin{frame}
   \frametitle{理论模型2}
+  近似条件
   \begin{equation*}
-    S\left(\rho\right)=-Tr\rho\ln\rho
+    \rho\left(t\right)\approx\rho_{\rm S}\left(t\right)\otimes\rho_{\rm B}
   \end{equation*}
   \pause
-  由此得到……
-
+  于是……
+  \begin{equation*}
+    \frac{d\rho}{d t}=\cdots
+  \end{equation*}
+  
 \end{frame}
 
 
