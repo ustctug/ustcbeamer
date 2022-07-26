@@ -1,5 +1,6 @@
-\begin{tikzpicture}[y=0.80pt, x=0.80pt, yscale=-\globalscale, xscale=\globalscale, inner sep=0pt, outer sep=0pt]
-    \begin{scope}[cm={{1,0.0,0.0,-1,(0,0)}}]
+% !TeX root = ./main.tex
+\begin{tikzpicture}[y=1pt, x=1pt, yscale=0.474*\backyscale, xscale=0.474*\backxscale, inner sep=0pt, outer sep=0pt]
+    % \begin{scope}[cm={{1,0.0,0.0,-1,(0,0)}}]
       \path[fill=themecolor1,even odd rule] (720.4059,0.3515) -- (720.4059,71.1507) --
         (0.3436,71.1507) -- (0.3436,0.3515) -- cycle;
     
@@ -43,6 +44,6 @@
       \path[fill=themecolor2,even odd rule] (0.3436,428.6568) -- (720.4059,428.6568) --
         (720.4059,425.4452) -- (0.3436,425.4452) -- cycle;
 
-      \node at(185,488){\textcolor{themecolor}{\includegraphics[width=0.4\paperwidth]{./theme/ustc_logo_side.pdf}}};
-    \end{scope}
+      \node at(185-\ustcshift,488){\textcolor{themecolor}{\includegraphics[scale=1]{./theme/ustc_logo_side.pdf}}};
+    % \end{scope}
 \end{tikzpicture}
